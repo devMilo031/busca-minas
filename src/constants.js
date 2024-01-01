@@ -3,3 +3,8 @@ export const gameMode = {
     medium: 20 * 20,
     hard: 30 * 30,
 };
+
+export const PIECES = {
+    mina: '💣',
+    blanco: ' '
+}

@@ -4,17 +4,24 @@
 }
 
 /*APP*/
-.testHandleClick {
+.square {
   height: 40px;
   width: 40px;
-  background-color: #0f9;
+  background-color: #245843;
   border: 1px solid #000;
+  cursor: pointer;
+
+}
+
+.square.isSelected {
+  background-color: #383839;
 }
 
 .bm-board.bm-easy-mode {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 }
+
 
 .bm-board.bm-medium-mode {
   display: grid;
