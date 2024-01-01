@@ -8,7 +8,7 @@ import { Square } from './components/Square'
 function App() {
 
   const [board, setBoard] = useState(() => Array(gameMode.easy).fill(null))
-  const [mina, setMina] = useState(PIECES.blanco)
+  const [mine, setMine] = useState(PIECES.free)
 
   const updateBoard = (index) => {
     const newBoard = [...board]
@@ -30,10 +30,11 @@ function App() {
                 key={index}
                 index={index}
                 updateBoard={updateBoard}
-                isSelected={mina === PIECES.mina}
+                isSelected={mine === PIECES.mine}
               >
-                {mina ? PIECES.mina : PIECES.blanco}
+                {mine}
               </Square>
+              
             )
           })
         }

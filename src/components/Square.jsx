@@ -1,12 +1,9 @@
-import { useState } from "react"
+//import { useState } from "react"
 
-export function Square({index, children, updateBoard, isSelected}) {
 
-    const [square,setSqaure] = useState(()=>{
-        
-    })
-
-    const className = `square ${isSelected ? '' : 'isSelected'}`
+export function Square({index, children, updateBoard, isSelected, mine}) {
+    //Asignamos la clase al componente dependiendo del estado que se asigne    
+    const className = `square ${isSelected ? 'isSelected' : ''}`
     
     const handleClick = () => {
         console.log('Diste click')

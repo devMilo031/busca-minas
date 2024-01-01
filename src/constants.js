@@ -5,6 +5,6 @@ export const gameMode = {
 };
 
 export const PIECES = {
-    mina: '💣',
-    blanco: ' '
+    mine: '💣',
+    free: ' '
 }
