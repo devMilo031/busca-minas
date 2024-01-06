@@ -1,19 +1,27 @@
 import './App.css'
 
 import { useState } from 'react'
-import { gameMode, PIECES } from './constants'
+import { gameMode, PIECES, piecesNumbers } from './constants'
 import { ButtomGameMode } from './components/ButtomGameMode'
 import { Square } from './components/Square'
 
 function App() {
 
   const [board, setBoard] = useState(() => Array(gameMode.easy).fill(null))
-  const [mine, setMine] = useState(PIECES.free)
+  const [piece, setPiece] = useState(PIECES.free)
+
+  const [mine, setMine] = useState(() => {
+    let boardMines = [...board]
+    boardMines = Math.floor(Math.random() * piecesNumbers.easy)
+    return boardMines
+  })
+  console.log(mine)
 
   const updateBoard = (index) => {
     const newBoard = [...board]
     newBoard[index]
     setBoard(newBoard)
+    setPiece(PIECES.free ? PIECES.mine : PIECES.free)
   }
 
   return (
@@ -30,11 +38,11 @@ function App() {
                 key={index}
                 index={index}
                 updateBoard={updateBoard}
-                isSelected={mine === PIECES.mine}
+                isSelected={piece === PIECES.mine}
               >
-                {mine}
+                {piece}
               </Square>
-              
+
             )
           })
         }
