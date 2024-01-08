@@ -1,7 +1,6 @@
-//import { useState } from "react"
+import {PIECES} from '../constants'
 
-
-export function Square({index, children, updateBoard, isSelected}) {
+export function Square({children,index, updateBoard, isSelected}) {
     //Asignamos la clase al componente dependiendo del estado que se asigne    
     const className = `square ${isSelected ? 'isSelected' : ''}`
 

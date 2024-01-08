@@ -1,9 +1,9 @@
 export const gameMode = {
-    easy: 10 * 10,
-    medium: 20 * 20,
-    hard: 30 * 30,
+    easy: 10,
+    medium: 20,
+    hard: 30,
 };
-export const piecesNumbers = {
+export const mineNumbers = {
     easy: 10,
     medium: 20,
     hard: 30,
@@ -11,5 +11,16 @@ export const piecesNumbers = {
 
 export const PIECES = {
     mine: '💣',
-    free: ' '
+    free: ' ',
+    onPiece: ''
 }
+
+export const MATCHES = [
+    [-1, 0],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [1, -1],
+    [1, 0],
+    [1, 1]
+]

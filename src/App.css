@@ -4,35 +4,30 @@
 }
 
 /*APP*/
-.square {
-  height: 40px;
-  width: 40px;
-  background-color: #245843;
-  border: 1px solid #000;
-  cursor: pointer;
-  
-}
 
-.square.isSelected {
-  background-color: #383839;
-}
-
-.bm-board.bm-easy-mode {
+.bm-game {
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto 1fr auto;
 }
 
-
-.bm-board.bm-medium-mode {
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  gap: 1px;
+.bm-cells {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid;
+  padding: 1rem;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
 }
 
-.bm-board.bm-hard-mode {
-  display: grid;
-  grid-template-columns: repeat(30, 1fr);
-  gap: 1px;
+.bm-rows {
+  display: flex;
+}
+
+.bm-buttom-game{
+    height: 100%;
+    width: 100%;
 }
 
 /*APP*/
