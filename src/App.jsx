@@ -2,8 +2,7 @@ import './App.css'
 
 import { useState, useEffect } from 'react'
 import { gameMode, PIECES, MATCHES, mineNumbers } from './constants'
-import { ButtomGameMode } from './components/ButtomGameMode'
-
+//import { ButtomGameMode } from './components/ButtomGameMode'
 
 function App() {
   const [clicked, setClicked] = useState([])
@@ -36,8 +35,31 @@ function App() {
     }
   }, [board])
 
+  function ButtomGameMode({ difficult }) {
+    const handleClick = () => {
+      switch (difficult) {
+        case 'Easy':
+          setDifficult(gameMode.easy)
+          break
+        case 'Medium':
+          setDifficult(gameMode.medium)
+          break
+        case 'Hard':
+          setDifficult(gameMode.hard)
+          break
+      }
+    }
+    return (
+      <button onClick={handleClick} className="bm-btn-game-mode">{difficult}</button>
+    )
+  }
+  useEffect(() => {
+    setBoard(Array.from({ length: difficult }, () => Array.from({ length: difficult }, () => 0)))
+  }, [difficult])
+
+
   function handleClick(rowIndex, cellIndex) {
-    if (clicked.length + 1 === gameMode.easy ** 2 - gameMode.easy) {
+    if (clicked.length + 1 === difficult ** 2 - difficult) {
       setStatus('won')
     } else if (board[rowIndex][cellIndex] === 'B') {
       setStatus('lost')

@@ -1,4 +1,4 @@
-import { gameMode, mineNumbers } from "../constants"
+/*import { gameMode, mineNumbers } from "../constants"
 import { useState } from "react"
 
 export function ButtomGameMode({ difficult }) {
@@ -30,4 +30,4 @@ export function ButtomGameMode({ difficult }) {
         <button onClick={handleClick} className="bm-btn-game-mode">{difficult}</button>
     )
     //tratar de hacer que el boton renderice un tablero segun la dificultad que se desee
-}
+}*/
