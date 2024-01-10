@@ -46,8 +46,7 @@ function App() {
   }
 
   const resetGame = () => {
-    setBoard(null)
-    setBoard(Array.from({ length: difficult }, () => Array.from({ length: difficult }, () => 0)))
+    location.reload()
   }
 
   return (
