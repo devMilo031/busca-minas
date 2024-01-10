@@ -5,30 +5,36 @@ import { gameMode, PIECES, MATCHES, mineNumbers } from './constants'
 import { ButtomGameMode } from './components/ButtomGameMode'
 
 
-const board = Array.from({ length: gameMode.easy }, () => Array.from({ length: gameMode.easy }, () => 0))
-for (let count = mineNumbers.easy; count > 0; count--) {
-  const rowRandom = Math.floor(Math.random() * mineNumbers.easy)
-  const cellRandom = Math.floor(Math.random() * mineNumbers.easy)
-  board[rowRandom][cellRandom] = 'B'
-}
-
-for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
-  for (let cellIndex = 0; cellIndex < board[rowIndex].length; cellIndex++) {
-    if (board[rowIndex][cellIndex] === 'B') continue;
-
-    let bombCount = 0
-
-    for (const match of MATCHES) {
-      if (board[rowIndex + match[0]]?.[cellIndex + match[1]] === 'B') {
-        bombCount++
-      }
-    }
-    board[rowIndex][cellIndex] = bombCount
-  }
-}
 function App() {
   const [clicked, setClicked] = useState([])
   const [status, setStatus] = useState('playing')
+  const [difficult, setDifficult] = useState(gameMode.easy)
+
+  const [board, setBoard] = useState(
+    Array.from({ length: difficult }, () => Array.from({ length: difficult }, () => 0))
+  )
+
+  useEffect(() => {
+    for (let count = mineNumbers.easy; count > 0; count--) {
+      const rowRandom = Math.floor(Math.random() * mineNumbers.easy)
+      const cellRandom = Math.floor(Math.random() * mineNumbers.easy)
+      board[rowRandom][cellRandom] = 'B'
+      for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
+        for (let cellIndex = 0; cellIndex < board[rowIndex].length; cellIndex++) {
+          if (board[rowIndex][cellIndex] === 'B') continue;
+
+          let bombCount = 0
+
+          for (const match of MATCHES) {
+            if (board[rowIndex + match[0]]?.[cellIndex + match[1]] === 'B') {
+              bombCount++
+            }
+          }
+          board[rowIndex][cellIndex] = bombCount
+        }
+      }
+    }
+  }, [board])
 
   function handleClick(rowIndex, cellIndex) {
     if (clicked.length + 1 === gameMode.easy ** 2 - gameMode.easy) {
@@ -36,25 +42,21 @@ function App() {
     } else if (board[rowIndex][cellIndex] === 'B') {
       setStatus('lost')
     }
-
     setClicked(clicked => clicked.concat(`${rowIndex}-${cellIndex}`))
   }
 
-  const updateBoard = (index) => {
-    const newBoard = [...board]
-    newBoard[index]
-    setBoard(newBoard)
-  }
   const resetGame = () => {
-    setBoard(Array(gameMode.easy).fill(null))
-    setPiece(PIECES.onPiece)
+    setBoard(null)
+    setBoard(Array.from({ length: difficult }, () => Array.from({ length: difficult }, () => 0)))
   }
 
   return (
     <main className='bm-game'>
       <h1>Busca minas</h1>
       <div className='bm-game-mode'>
-        <ButtomGameMode />
+        <ButtomGameMode difficult={'Easy'} />
+        <ButtomGameMode difficult={'Medium'} />
+        <ButtomGameMode difficult={'Hard'} />
       </div>
       <section>
         <section className=' bm-easy-mode'>

@@ -5,17 +5,28 @@
 
 /*APP*/
 
-.bm-game {
-  margin: auto;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+.bm-game-mode {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.bm-game-mode button {
+  font-size: 20px;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid #fff;
+}
+
+.bm-game-mode button:hover {
+  background-color: #34536c;
 }
 
 .bm-cells {
+  font-size: 20px;
   height: 2rem;
   width: 2rem;
   border: 1px solid;
-  padding: 1rem;
   display: flex;
   justify-items: center;
   justify-content: center;
@@ -25,9 +36,11 @@
   display: flex;
 }
 
-.bm-buttom-game{
-    height: 100%;
-    width: 100%;
+.bm-buttom-game {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 /*APP*/
