@@ -1,33 +1,28 @@
-/*import { gameMode, mineNumbers } from "../constants"
 import { useState } from "react"
+import { gameMode } from "../constants"
+import { useDifficult } from "../hooks/useDifficult"
 
-export function ButtomGameMode({ difficult }) {
+export function ButtomGameMode({ gamemode }) {
 
-    const [diff, setDifficult] = useState(gameMode.easy)
-    const [mines, setMine] = useState(mineNumbers.easy)
+    const { difficult, setDifficult } = useDifficult()
 
-    switch (difficult) {
-        case 'easy':
-            setDifficult(gameMode.easy)
-            setMine(mineNumbers)
-            break
-        case 'medium':
-            setDifficult(gameMode.medium)
-            setMine(mineNumbers.medium)
-
-            break
-        case 'hard':
-            setDifficult(gameMode.hard)
-            setMine(mineNumbers.hard)
-
-            break
-    }
     const handleClick = () => {
-        return gameMode.medium
+        if (gamemode === 'Easy') {
+            setDifficult(gameMode.easy)
+            return
+        }
+        if (gamemode === 'Medium') {
+            setDifficult(gameMode.medium)
+            return
+        }
+        if (gamemode === 'Hard') {
+            setDifficult(gameMode.hard)
+            return
+        }
     }
+
 
     return (
-        <button onClick={handleClick} className="bm-btn-game-mode">{difficult}</button>
+        <button onClick={handleClick} className="bm-btn-game-mode">{gamemode}</button>
     )
-    //tratar de hacer que el boton renderice un tablero segun la dificultad que se desee
-}*/
+}
